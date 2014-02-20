@@ -1,0 +1,9 @@
+h1
+{
+  text-align: center;
+}
+#sidebar
+{
+  height: 800px;
+  background-color: black;
+}
