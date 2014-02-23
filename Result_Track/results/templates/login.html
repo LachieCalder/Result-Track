@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load add_class %}
+{% block content %}
+
+<div class="container">
+<div class="row">
+  <div class="page-header"><h2>Login Form</h2></div>
+  {% if form.errors %}
+    <p> Invalid username/password combination, please try again </p>
+  {% endif %}
+  <form class="form-horizontal" action="{% url 'django.contrib.auth.views.login' %}" method="post">
+  {% csrf_token %}
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend><h3>Have an account? Sign In</h3></legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        {{form.username.label_tag|add_class:'col-md-1 control-label'}}
+        <div class="col-md-12">
+          {{form.username|add_class:'form-control input-md'}}
+        </div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group">
+        {{form.password.label_tag|add_class:'col-md-1 control-label'}}
+        <div class="col-md-12">
+          {{form.password|add_class:'form-control input-md'}}
+        </div>
+      </div>
+
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-1 control-label" for="login"></label>
+      <div class="col-md-5">
+        <button id="submit" name="submit" type="submit" class="btn btn-block btn-success">Login</button>
+      </div>
+      <div class="col-md-5">
+        <a href="../register/"<button id="forpass" name="forpass" class="btn btn-block btn-primary">Register</button></a></div>
+      </div>
+    </fieldset>
+  </form>
+</div> <!--./row -->
+</div>
+{% endblock %}

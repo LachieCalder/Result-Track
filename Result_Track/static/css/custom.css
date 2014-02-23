@@ -7,3 +7,12 @@ h1
   height: 800px;
   background-color: #2E2E2E;
 }
+body
+{
+    padding-top: 60px;
+}
+
+form
+{
+    text-align: center;
+}
