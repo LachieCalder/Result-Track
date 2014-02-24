@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 class Student(models.Model):
 
@@ -22,6 +23,13 @@ class Result(models.Model):
     assignment = models.ForeignKey('Assignment')
     mark = models.PositiveSmallIntegerField()
     marked = models.BooleanField(default=False)
+
+    def is_overdue(self):
+        base_assignment = Assignment.objects.get(pk=self.assignment)
+        if base_assignment.due_date >= datetime.date.today():
+            return True
+        else:
+            return False
 
 class Assignment(models.Model):
     due_date = models.DateField()
