@@ -53,6 +53,8 @@ ROOT_URLCONF = 'Result_Track.urls'
 
 WSGI_APPLICATION = 'Result_Track.wsgi.application'
 
+AUTH_PROFILE_MODULE = 'results.Student'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

@@ -6,10 +6,10 @@ def about(request):
     return render(request, 'static/about.html', {'title': 'About'})
 
 def home(request):
-    if request.user_is_authenticated():
+    if request.user.is_authenticated():
 
         # get the student object associated with the logged in user
-        current_student = Student.objects.filter(user = request.user)
+        current_student = request.user.get_profile()
 
         # get all assignments associated with this student
         assignments = Result.objects.filter(student = current_student)
