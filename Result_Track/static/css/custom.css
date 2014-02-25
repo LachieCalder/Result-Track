@@ -1,13 +1,12 @@
-h1
-{
-  text-align: center;
-}
-
 .page-header {
     border-bottom: 1px solid #FFFFFF;
     margin: 20px 0 10px 0;
     padding-bottom: 9px;
     text-align: center;
+}
+
+.standard-row .page-header {
+    text-align: left;
 }
 
 .form-control {
@@ -47,15 +46,20 @@ legend {
     font-size: 21px;
 }
 
-h4 {
+h3 {
     text-align: center;
 }
 
 h2
 {
     color: black;
+    text-align: center;
 }
 
 .control-label {
     color: black;
+}
+
+.jumbotron {
+    margin-top: 50px;
 }

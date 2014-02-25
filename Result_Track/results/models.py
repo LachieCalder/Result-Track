@@ -17,30 +17,32 @@ class Student(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=50)
     teacher = models.ForeignKey('Teacher')
+    students = models.ManyToManyField(Student)
 
     def __unicode__(self):
         return self.name
 
 class Teacher(models.Model):
+    user = models.OneToOneField(User)
+
     title = models.CharField(max_length=10)
     first_name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return self.first_name + ' ' + self.surname
+        return self.title + ' ' + self.first_name + ' ' + self.surname
 
 class Result(models.Model):
     student = models.ForeignKey('Student')
     assignment = models.ForeignKey('Assignment')
-    mark = models.PositiveSmallIntegerField()
+    mark = models.PositiveSmallIntegerField(default=0)
     marked = models.BooleanField(default=False)
 
     def __unicode__(self):
         return str(self.student) + "'s " + str(self.assignment)
 
     def is_overdue(self):
-        base_assignment = Assignment.objects.get(pk=self.assignment)
-        if base_assignment.due_date >= datetime.date.today():
+        if self.assignment.due_date >= datetime.date.today():
             return True
         else:
             return False
@@ -53,4 +55,4 @@ class Assignment(models.Model):
     details = models.TextField()
 
     def __unicode__(self):
-        return self.name
+        return str(self.course) + ': ' + self.name
