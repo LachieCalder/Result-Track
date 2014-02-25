@@ -12,7 +12,7 @@ def home(request):
         # get the student object associated with the logged in user
         current_student = request.user.get_profile()
 
-        results = Result.objects.filter(student=current_student, marked=True)
+        results = Result.objects.filter(student=current_student, marked=True).order_by('assignment__course')
 
         available, earned = 0.0, 0.0
 
@@ -30,6 +30,7 @@ def home(request):
         available = int(available)
 
         return render(request, 'home.html', {'available': available, 'earned': earned,
-                                             'percentage': percentage_complete})
+                                             'percentage': percentage_complete,
+                                             'results': results,})
     else:
         return HttpResponseRedirect("../login")

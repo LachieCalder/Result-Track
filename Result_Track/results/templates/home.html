@@ -9,7 +9,7 @@
         {% if available > 0 %}
         <h2>You have earned <strong>{{ earned }}</strong> credits out of <strong>{{ available }}</strong>
              credits available</h2>
-        <h3>This means you are on track to pass with <strong>distinction</strong></h3>
+        <h3>This means you are on track to pass with <strong>commendation</strong></h3>
         {% else %}
         <h2>No points available yet</h2>
         {% endif %}
@@ -18,7 +18,17 @@
     <div class="col-md-6">
         <h3>Credits Breakdown</h3>
         <hr>
-
+        <ul class="list-group">
+            {% for result in results %}
+            {% ifchanged result.assignment.course %}
+            <li class="list-group-item active">{{ result.assignment.course.name }}</li>
+            {% endifchanged %}
+            <li class="list-group-item">
+                <span class="badge">{{ result.mark }}/{{ result.assignment.possible_mark }}</span>
+                {{ result.assignment.name }}
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 

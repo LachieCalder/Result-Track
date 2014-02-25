@@ -21,7 +21,7 @@ body {
     background-color: #FFFFFF;
 }
 
-.row {
+#login {
     background: #ededed;
     padding: 20px 50px 20px 50px;
     margin: 100px;
@@ -63,3 +63,22 @@ h2
 .jumbotron {
     margin-top: 50px;
 }
+
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #008cba;
+  border-color: #008cba;
+}
+.list-group-item.active .list-group-item-heading,
+.list-group-item.active:hover .list-group-item-heading,
+.list-group-item.active:focus .list-group-item-heading {
+  color: inherit;
+}
+.list-group-item.active .list-group-item-text,
+.list-group-item.active:hover .list-group-item-text,
+.list-group-item.active:focus .list-group-item-text {
+  color: #87e1ff;
+
